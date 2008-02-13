@@ -351,4 +351,19 @@
 (drop-test "2-out-of-7" ('(1 2 3 4 5 6 7) 2) (1 3 5 7))
 (drop-test "3-out-of-7" ('(1 2 3 4 5 6 7) 3) (1 2 4 5 7))
 
+(declare-multi-result-func-test split)
+
+(defun split (the-list len)
+  (cond ((null the-list) (list () ()))
+        ((zerop len) (list () the-list))
+        (t (let ((ret (split (cdr the-list) (1- len))))
+                (list (cons (car the-list) (car ret))
+                      (cadr ret))))))
+
+(split-test "null0" (() 0) (() ()))
+(split-test "null5" (() 5) (() ()))
+(split-test "3-2" ('(a b c) 2) ((a b) (c)))
+(split-test "3-5" ('(a b c) 5) ((a b c) ()))
+(split-test "a-k-3"  ('(a b c d e f g h i k) 3) ((a b c) ( d e f g h i k)))
+
 (cybertiggyr-test:run)

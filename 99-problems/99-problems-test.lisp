@@ -366,4 +366,12 @@
 (split-test "3-5" ('(a b c) 5) ((a b c) ()))
 (split-test "a-k-3"  ('(a b c d e f g h i k) 3) ((a b c) ( d e f g h i k)))
 
+(declare-multi-result-func-test slice)
+
+(defun slice (the-list start end)
+  (car (split (cadr (split the-list (1- start))) (1+ (- end start)))))
+
+(slice-test "a-k-3-7" ('(a b c d e f g h i k) 3 7) (c d e f g))
+(slice-test "a-k-1-7" ('(a b c d e f g h i k) 1 7) (a b c d e f g))
+
 (cybertiggyr-test:run)

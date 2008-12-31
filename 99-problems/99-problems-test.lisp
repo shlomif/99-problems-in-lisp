@@ -374,4 +374,15 @@
 (slice-test "a-k-3-7" ('(a b c d e f g h i k) 3 7) (c d e f g))
 (slice-test "a-k-1-7" ('(a b c d e f g h i k) 1 7) (a b c d e f g))
 
+(defun rotate (the-list num-places)
+  (let* ((l (length the-list))
+         (place (mod num-places l))
+         (splitted (split the-list place)))
+    (append (cadr splitted) (car splitted))))
+
+(declare-multi-result-func-test rotate)
+
+(rotate-test "a-h-3" ('(a b c d e f g h) 3) (d e f g h a b c))
+(rotate-test "a-h-minus-2" ('(a b c d e f g h) -2) (g h a b c d e f))
+
 (cybertiggyr-test:run)

@@ -2,7 +2,7 @@
 (load "cybertigger-test.lisp")
 (import 'cybertiggyr-test:deftest)
 
-;;; Load the library to be tested. 
+;;; Load the library to be tested.
 ; commented out.
 ; (load "99-problems.lisp")
 
@@ -68,7 +68,7 @@
 
 (defun list-len (the-list)
   (labels ((helper (myrest mycount)
-                   (if (null myrest) 
+                   (if (null myrest)
                      mycount
                      (helper (cdr myrest) (1+ mycount)))))
     (helper the-list 0)))
@@ -93,7 +93,7 @@
 (reverse-list-test one-elem (1) (1))
 (reverse-list-test two-elem (a e) (e a))
 (reverse-list-test three-elem (zod qod mod) (mod qod zod))
-(reverse-list-test grand-finale (1 2 5 hello 100 placebo) 
+(reverse-list-test grand-finale (1 2 5 hello 100 placebo)
                    (placebo 100 hello 5 2 1))
 
 (defmacro list-eq-test (id list1 list2 result)
@@ -323,7 +323,7 @@
        (helper the-list ,@arg-init-vals))))
 
 (defun repli (the-list times)
-  (list-proc-helper ((mycount times)) 
+  (list-proc-helper ((mycount times))
                     (if (zerop mycount)
                       (helper (rest myrest) times)
                       (cons (first myrest) (helper myrest (1- mycount))))))

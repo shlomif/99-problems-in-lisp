@@ -138,7 +138,7 @@ seconds."
       (funcall fn)))
 
 (defun ratetable (names-and-fns strm)
-  "Run RATE on a bunch of functios & return a LaTeX table in a 
+  "Run RATE on a bunch of functios & return a LaTeX table in a
 string which shows the results of all of them.  Each element
 in NAMES-AND-FNS is a list whose FIRST is the name of the function
 in a string & whose SECOND is a function of no arguments whose
